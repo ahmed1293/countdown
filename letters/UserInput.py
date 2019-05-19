@@ -20,7 +20,7 @@ class UserInput:
                 print("Letters only!")
                 continue
 
-            self.input_letters = user_input
+            self.input_letters = user_input.lower()
             return
 
     def _get_minimum_word_length_from_usr(self):

@@ -6,7 +6,7 @@ from UserInput import UserInput
 class LettersToWords:
 
     def __init__(self):
-        self.user_input = UserInput(maximum_number_of_letters=20)
+        self.user_input = UserInput(maximum_number_of_letters=30)
         self.words_file = None
         self.matching_words = []
 
@@ -25,7 +25,7 @@ class LettersToWords:
 
         for word in self.words_file.readlines():
             word = word[:-1]
-            if len(word) >= minimum_word_length and self._all_letters_match(word):
+            if len(word) >= minimum_word_length and self._all_letters_match(word.lower()):
                 self.matching_words.append(word)
         self.matching_words.sort(key=len)
 
