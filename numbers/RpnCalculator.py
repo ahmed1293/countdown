@@ -2,27 +2,46 @@ import operator
 
 # https://en.wikipedia.org/wiki/Reverse_Polish_notation
 
-OPERATORS = {
-        "+": operator.add,
-        "-": operator.sub,
-        "*": operator.mul,
-        "/": operator.truediv
-    }
 
+class RpnCalculator:
 
-def rpn_calculate(expression):
-    tokens = expression.split()
-    stack = []
+    OPERATORS = {
+            "+": operator.add,
+            "-": operator.sub,
+            "*": operator.mul,
+            "/": operator.truediv
+        }
+    
+    def __init__(self, target):
+        self.target = target
+        self.correct_calculation = None
 
-    for token in tokens:
-        if token in OPERATORS:
-            arg_2 = stack.pop()
-            arg_1 = stack.pop()
-            result = OPERATORS[token](arg_1, arg_2)
-            stack.append(result)
-        else:
-            stack.append(int(token))
+    def calculate(self, expression):
+        stack = []
 
-    final_result = stack.pop()
-    return final_result
+        for index, token in enumerate(expression):
+            if token in self.OPERATORS:
+                try:
+                    arg_2 = stack.pop()
+                    arg_1 = stack.pop()
+                except IndexError:
+                    return False
+                try:
+                    result = self.OPERATORS[token](arg_1, arg_2)
+                except ZeroDivisionError:
+                    return False
+                stack.append(result)
+                if result == self.target:
+                    self.correct_calculation = expression[0:index+1]
+                    return True
+            else:
+                stack.append(int(token))
 
+        final_result = stack.pop()
+        if final_result == self.target:
+            self.correct_calculation = expression
+            return True
+        return False
+
+    def expression_is_valid(self, expression):
+        pass
