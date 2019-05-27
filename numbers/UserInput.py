@@ -17,12 +17,13 @@ class UserInput:
             if len(input_list) != 6:
                 continue
             else:
-                def convert_to_positive_int(string):
+                def check_if_positive_int(string):
                     integer = int(string)
                     if integer <= 0:
                         raise ValueError
+                    return integer
                 try:
-                    self.input_numbers = list(map(convert_to_positive_int, input_list))
+                    self.input_numbers = list(map(check_if_positive_int, input_list))
                 except ValueError:
                     print("Positive integers only!")
                     continue
