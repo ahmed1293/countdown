@@ -1,5 +1,7 @@
 class UserInput:
 
+    NO_OF_NUMBERS = 4
+
     def __init__(self):
         self.input_numbers = None
         self.input_target = None
@@ -10,11 +12,11 @@ class UserInput:
 
     def _get_numbers_from_usr(self):
         while True:
-            user_input = input("Enter 6 numbers separated by a space: ")
+            user_input = input(f'Enter {self.NO_OF_NUMBERS} numbers separated by a space: ')
 
             input_list = user_input.split()
 
-            if len(input_list) != 6:
+            if len(input_list) != self.NO_OF_NUMBERS:
                 continue
             else:
                 def check_if_positive_int(string):
