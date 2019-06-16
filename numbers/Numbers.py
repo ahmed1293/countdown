@@ -5,45 +5,51 @@ from UserInput import UserInput
 from RpnCalculator import RpnCalculator
 
 
-# Figure out how to speed this up...
-# Use 4 numbers for now (to make testing quicker)?
-# Try get to 30 secs maximum, with 6 numbers
+# TODO: Print output or time - use asyncio.
 
 class Numbers:
 
-    OPERATORS = ['+', '-', '*', '/']
+    OPERATORS = ['+', '*', '-', '/']
 
     def __init__(self):
         self.user_input = UserInput()
         self.numbers = []
         self.target = 0
+        self.rpn_calculator = None
 
     def run(self):
         self.user_input.get()
+        print('\nComputing...')
         start_time = time.time()
         self.numbers = self.user_input.input_numbers
         self.target = self.user_input.input_target
-        self._compute_all_combinations()
+        self.rpn_calculator = RpnCalculator(self.target)
+        self._find_solution()
         end_time = time.time()
-        print("Time elapsed: " + str(round(end_time - start_time, 3)))
+        print('Time elapsed: ' + str(round(end_time - start_time, 3)))
 
-    def _compute_all_combinations(self):
-        rpn_calculator = RpnCalculator(self.target)
-        operator_permutations = itertools.combinations_with_replacement(self.OPERATORS, 5)
-        attempt = 0
+    def _find_solution(self):
+        operator_permutations = itertools.combinations_with_replacement(self.OPERATORS, UserInput.NO_OF_NUMBERS-1)
+        # 56 operator permutations if 6 numbers
         for op_perm in operator_permutations:
-            numbers_and_ops = self.numbers + list(op_perm)
-            permutations = itertools.permutations(numbers_and_ops)
-            valid_rpn = [rpn for rpn in permutations if rpn_calculator.is_valid(rpn)]
-            for permutation in valid_rpn:
-                attempt += 1
-                if rpn_calculator.calculate(permutation):
-                    print(rpn_calculator.correct_calculation)
-                    print(f'Attempts made: {attempt}')
-                    return
-                else:
-                    print(f'Attempt {attempt}', end='\r')
+            valid_permutations = self._find_valid_combinations(list(op_perm))
+            if self._compute_permutations(valid_permutations):
+                return
         print('No solution found')
+
+    def _find_valid_combinations(self, operator_permutation):
+        numbers_and_ops = self.numbers + operator_permutation
+        permutations = itertools.permutations(numbers_and_ops)  # 39916800 permutations if 6 numbers
+        valid_permutations = filter(lambda rpn: self.rpn_calculator.is_valid(rpn), permutations)
+        yield from valid_permutations
+
+    def _compute_permutations(self, permutations):
+        solution_found = next(filter(lambda rpn: self.rpn_calculator.calculate(rpn), permutations), False)
+        if solution_found:
+            print('\nSolution found!')
+            print(self.rpn_calculator.correct_calculation)
+            return True
+        return False
 
 
 Numbers().run()
