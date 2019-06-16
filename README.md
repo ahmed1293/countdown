@@ -16,12 +16,12 @@ Normal rules will restrict the number of 'large' (> 25) and 'small' numbers. Her
 Prerequisite knowledge: [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) (RPN). I discovered this thanks
 to [this](http://www.datagenetics.com/blog/august32014/index.html) blog.
 
-1. Compute all combinations of operators (5 operators with repeats results in 56 permutations).
+1. Compute all combinations of operators (5 operators with repeats results is 56 permutations).
 2. Loop through operator combinations. For each combination:
-    3. Find all permutations of operators mixed with the numbers (39916800 permutations if 6 numbers).
-    4. Filter out invalid combinations.
-    5. Filter based on calculated value matching target.
-    6. Exit if match is found.
+    - Find all permutations of operators mixed with the numbers (39916800 permutations if 6 numbers).
+    - Filter out invalid combinations.
+    - Filter based on calculated value matching target.
+    - Exit if match is found.
 
 
 ### Letters
