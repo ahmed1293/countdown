@@ -1,6 +1,6 @@
 class UserInput:
 
-    NO_OF_NUMBERS = 4
+    NO_OF_NUMBERS = 6
 
     def __init__(self):
         self.input_numbers = None
@@ -29,7 +29,6 @@ class UserInput:
                 except ValueError:
                     print("Positive integers only!")
                     continue
-
                 return
 
     def _get_target_from_usr(self):
