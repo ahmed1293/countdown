@@ -22,12 +22,14 @@ class RpnCalculator:
 
         for index, token in enumerate(expression):
             if token in self.OPERATORS:
-                arg_2 = stack.pop()
-                arg_1 = stack.pop()
-                result = self.OPERATORS[token](arg_1, arg_2)
+                try:
+                    arg_2 = stack.pop()
+                    arg_1 = stack.pop()
+                    result = self.OPERATORS[token](arg_1, arg_2)
+                except (IndexError, ZeroDivisionError):
+                    return False
                 stack.append(result)
-                if result == self.target:
-                    # check if intermediate calculation suffices
+                if result == self.target:  # check if intermediate calculation suffices
                     self.correct_calculation = expression[0:index+1]
                     return True
             else:
@@ -39,20 +41,3 @@ class RpnCalculator:
             return True
         return False
 
-    def is_valid(self, expression):
-        stack = []
-
-        for token in expression:
-            if token in self.OPERATORS:
-                try:
-                    arg_2 = stack.pop()
-                    arg_1 = stack.pop()
-                    result = self.OPERATORS[token](arg_1, arg_2)
-                except (IndexError, ZeroDivisionError):
-                    return False
-                stack.append(result)
-            else:
-                stack.append(int(token))
-
-        stack.pop()
-        return True

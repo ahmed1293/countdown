@@ -32,16 +32,11 @@ class Numbers:
         operator_permutations = itertools.combinations_with_replacement(self.OPERATORS, UserInput.NO_OF_NUMBERS-1)
         # 56 operator permutations if 6 numbers
         for op_perm in operator_permutations:
-            valid_permutations = self._find_valid_combinations(list(op_perm))
-            if self._compute_permutations(valid_permutations):
+            numbers_and_ops = self.numbers + list(op_perm)
+            permutations = itertools.permutations(numbers_and_ops)  # 39916800 permutations if 6 numbers
+            if self._compute_permutations(permutations):
                 return
         print('No solution found')
-
-    def _find_valid_combinations(self, operator_permutation):
-        numbers_and_ops = self.numbers + operator_permutation
-        permutations = itertools.permutations(numbers_and_ops)  # 39916800 permutations if 6 numbers
-        valid_permutations = filter(lambda rpn: self.rpn_calculator.is_valid(rpn), permutations)
-        yield from valid_permutations
 
     def _compute_permutations(self, permutations):
         solution_found = next(filter(lambda rpn: self.rpn_calculator.calculate(rpn), permutations), False)
