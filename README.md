@@ -1,6 +1,6 @@
 ## Intro
 
-I used to watch a lot of "8 out of 10 Cats does Countdown", and I generally sucked on both rounds. So, I decided to automate them.
+I used to watch a lot of "8 out of 10 Cats does Countdown", and I generally sucked on both rounds. So, I decided to automate them :)
 
 ### Numbers
 
@@ -19,9 +19,12 @@ to [this](http://www.datagenetics.com/blog/august32014/index.html) blog.
 1. Compute all combinations of operators (5 operators with repeats results is 56 permutations).
 2. Loop through operator combinations. For each combination:
     - Find all permutations of operators mixed with the numbers (39916800 permutations if 6 numbers).
-    - Filter out invalid combinations.
-    - Filter based on calculated value matching target.
+    - Compute the value of each permutation using the RpnCalculator.
     - Exit if match is found.
+    
+#### Issues
+
+The above implementation involves three large nested loops and is therefore pretty slow!
 
 
 ### Letters
