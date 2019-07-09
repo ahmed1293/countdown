@@ -5,7 +5,7 @@ from UserInput import UserInput
 from RpnCalculator import RpnCalculator
 
 
-# TODO: Print output or time - use asyncio.
+# TODO: Use tqdm to print progress: https://github.com/tqdm/tqdm
 
 class Numbers:
 
@@ -39,7 +39,10 @@ class Numbers:
         print('No solution found')
 
     def _compute_permutations(self, permutations):
-        solution_found = next(filter(lambda rpn: self.rpn_calculator.calculate(rpn), permutations), False)
+        solution_found = next(
+            filter(lambda rpn: self.rpn_calculator.calculate(rpn), permutations),
+            False
+        )
         if solution_found:
             print('\nSolution found!')
             print(self.rpn_calculator.correct_calculation)
