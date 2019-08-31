@@ -5,7 +5,11 @@ from UserInput import UserInput
 from RpnCalculator import RpnCalculator
 
 
-# TODO: Use tqdm to print progress: https://github.com/tqdm/tqdm
+# 12, 1, 3, 4, 5, 6 ==> 33.
+# python ==> 150s. pypy ==> 6s.
+
+# 3, 3, 25, 50, 75, 100 ==> 996.
+# python ==> cba to wait. pypy ==> 81s.
 
 class Numbers:
 
@@ -33,20 +37,18 @@ class Numbers:
         # 56 operator permutations if 6 numbers
         for op_perm in operator_permutations:
             numbers_and_ops = self.numbers + list(op_perm)
+            print(numbers_and_ops)
             permutations = itertools.permutations(numbers_and_ops)  # 39916800 permutations if 6 numbers
             if self._compute_permutations(permutations):
                 return
         print('No solution found')
 
     def _compute_permutations(self, permutations):
-        solution_found = next(
-            filter(lambda rpn: self.rpn_calculator.calculate(rpn), permutations),
-            False
-        )
-        if solution_found:
-            print('\nSolution found!')
-            print(self.rpn_calculator.correct_calculation)
-            return True
+        for permutation in permutations:
+            if self.rpn_calculator.calculate(permutation):
+                print('\nSolution found!')
+                print(self.rpn_calculator.correct_calculation)
+                return True
         return False
 
 

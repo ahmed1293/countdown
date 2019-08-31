@@ -17,7 +17,6 @@ class RpnCalculator:
         self.correct_calculation = None
 
     def calculate(self, expression):
-        # assumes expression is valid
         stack = []
 
         for index, token in enumerate(expression):
