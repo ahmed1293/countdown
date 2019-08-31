@@ -2,6 +2,10 @@
 
 I used to watch a lot of "8 out of 10 Cats does Countdown", and I generally sucked on both rounds. So, I decided to automate them :)
 
+
+The algorithm for the numbers game could almost definitely be improved, but I was interested in testing python vs pypy. I was not
+expecting such a drastic speed-up in execution, but was pleasantly surprised.
+
 ### Numbers
 
 Given six numbers and one target number, try to generate the target by using standard operations (+, -, *, /) on the six numbers. No number can be used more than once.
@@ -9,7 +13,9 @@ Normal rules will restrict the number of 'large' (> 25) and 'small' numbers. Her
 
 #### Usage 
 
-`python Numbers.py`, then follow instructions.
+`python Numbers.py`, then follow instructions. 
+
+_Tip:_ use [pypy](https://pypy.org) for 25x quicker execution time! 
 
 #### Implementation
 
@@ -21,11 +27,6 @@ to [this](http://www.datagenetics.com/blog/august32014/index.html) blog.
     - Find all permutations of operators mixed with the numbers (39916800 permutations if 6 numbers).
     - Compute the value of each permutation using the RpnCalculator.
     - Exit if match is found.
-    
-#### Issues
-
-The above implementation involves three large nested loops and is therefore pretty slow!
-
 
 ### Letters
 
