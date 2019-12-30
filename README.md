@@ -1,11 +1,3 @@
-## Intro
-
-I used to watch a lot of "8 out of 10 Cats does Countdown", and I generally sucked on both rounds. So, I decided to automate them :)
-
-
-The algorithm for the numbers game could almost definitely be improved, but I was interested in testing python vs pypy. I was not
-expecting such a drastic speed-up in execution, but was pleasantly surprised.
-
 ### Numbers
 
 Given six numbers and one target number, try to generate the target by using standard operations (+, -, *, /) on the six numbers. No number can be used more than once.
