@@ -25,7 +25,7 @@ to [this](http://www.datagenetics.com/blog/august32014/index.html) blog.
 Given some random letters, try to generate the longest word possible.
 
 #### Usage
-`python LettersToWords.py`, then follow instructions. 
+`python letters.py`, then follow instructions. 
 
 Note that the Unix "words" file, found in `/usr/share/dict/words`, is used as a dictionary so this script probably wont work on Windows.
 
