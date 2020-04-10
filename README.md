@@ -27,3 +27,6 @@ Given some random letters, try to generate the longest word possible.
 
 Note that the Unix "words" file, found in `/usr/share/dict/words`, is used as a dictionary so this script probably wont work on Windows.
 
+### _old/
+
+My implementation when I was first learning Python - it's not so pretty...
