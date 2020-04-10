@@ -5,9 +5,7 @@ Normal rules will restrict the number of 'large' (> 25) and 'small' numbers. Her
 
 #### Usage 
 
-`python Numbers.py`, then follow instructions. 
-
-_Tip:_ use [pypy](https://pypy.org) for 25x quicker execution time! 
+`pypy3 numbers.py`, then follow instructions (standard Python is about 25x as slow).
 
 #### Implementation
 
@@ -17,7 +15,7 @@ to [this](http://www.datagenetics.com/blog/august32014/index.html) blog.
 1. Compute all combinations of operators (5 operators with repeats results is 56 permutations).
 2. Loop through operator combinations. For each combination:
     - Find all permutations of operators mixed with the numbers (39916800 permutations if 6 numbers).
-    - Compute the value of each permutation using the RpnCalculator.
+    - Compute the value of each permutation (making use of RPN notation).
     - Exit if match is found.
 
 ### Letters
