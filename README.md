@@ -1,11 +1,17 @@
-### Numbers
+# Numbers
 
 Given six numbers and one target number, try to generate the target by using standard operations (+, -, *, /) on the six numbers. No number can be used more than once.
 Normal rules will restrict the number of 'large' (> 25) and 'small' numbers. Here, any input is accepted.
 
-#### Usage 
+## Usage 
 
-`pypy3 numbers.py`, then follow instructions (standard Python is about 25x as slow).
+### async
+
+TODO
+
+### sync
+
+`pypy3 numbers_sync.py`, then follow instructions (standard Python is about 25x as slow).
 
 #### Implementation
 
@@ -18,7 +24,7 @@ to [this](http://www.datagenetics.com/blog/august32014/index.html) blog.
     - Compute the value of each permutation (making use of RPN notation).
     - Exit if match is found.
 
-### Letters
+# Letters
 
 Given some random letters, try to generate the longest word possible.
 

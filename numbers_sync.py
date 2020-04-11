@@ -6,10 +6,10 @@ from user_input import get_numbers, get_target
 from constants import OPERATORS, OPERATOR_FUNCS, NO_OF_NUMBERS
 
 
-# 12, 1, 3, 4, 5, 6 ==> 33.
+# 12 1 3 4 5 6 ==> 33.
 # python ==> 150s. pypy ==> 6s.
 
-# 3, 3, 25, 50, 75, 100 ==> 996.
+# 3 3 25 50 75 100 ==> 996.
 # python ==> cba to wait. pypy ==> 81s.
 
 
