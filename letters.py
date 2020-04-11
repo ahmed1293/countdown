@@ -1,28 +1,4 @@
-MAX_NO_OF_LETTERS = 30
-
-
-def get_letters() -> str:
-    while True:
-        user_input = input(f'Enter up to {MAX_NO_OF_LETTERS} letters: ')
-        if len(user_input) > MAX_NO_OF_LETTERS:
-            print(f"That's more than {MAX_NO_OF_LETTERS}!")
-            continue
-        if not user_input.isalpha():
-            print('Letters only!')
-            continue
-        return ''.join(sorted(user_input.lower()))
-
-
-def get_minimum_word_length() -> int:
-    while True:
-        user_input = input('Enter the minimum word length: ')
-        if user_input == 0:
-            print("Minimum cant be 0!")
-            continue
-        if not user_input.isdigit():
-            print("Not an integer!")
-            continue
-        return int(user_input)
+from user_input import get_letters, get_minimum_word_length
 
 
 if __name__ == '__main__':

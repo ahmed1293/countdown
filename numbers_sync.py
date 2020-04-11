@@ -1,46 +1,16 @@
-import operator
 import itertools
 import sys
 import time
-from typing import List, Iterable, Optional
+from typing import Iterable, Optional
+from user_input import get_numbers, get_target
+from constants import OPERATORS, OPERATOR_FUNCS, NO_OF_NUMBERS
+
 
 # 12, 1, 3, 4, 5, 6 ==> 33.
 # python ==> 150s. pypy ==> 6s.
 
 # 3, 3, 25, 50, 75, 100 ==> 996.
 # python ==> cba to wait. pypy ==> 81s.
-
-NO_OF_NUMBERS = 6
-
-OPERATORS = ['+', '*', '-', '/']
-OPERATOR_FUNCS = {
-    "+": operator.add,
-    "-": operator.sub,
-    "*": operator.mul,
-    "/": operator.truediv
-}
-
-
-def get_numbers() -> List[int]:
-    while True:
-        user_input = input(f'Enter {NO_OF_NUMBERS} numbers separated by a space: ')
-        input_list = user_input.split()
-
-        if len(input_list) != NO_OF_NUMBERS:
-            continue
-
-        errors = [n for n in input_list if not n.isdigit() or int(n) <= 0]
-        if errors:
-            continue
-        return list(map(int, input_list))
-
-
-def get_target() -> int:
-    while True:
-        user_input = input("Enter the target number: ")
-        if not user_input.isdigit() or int(user_input) <= 0:
-            continue
-        return int(user_input)
 
 
 def check_if_solution(expression: Iterable, target: int) -> Optional[Iterable]:
@@ -78,7 +48,7 @@ if __name__ == '__main__':
         [itertools.permutations(_numbers + list(op)) for op in operator_permutations]
     )
 
-    for index, permutation in enumerate(permutations):
+    for permutation in permutations:
         solution = check_if_solution(permutation, _target)
         if solution:
             print(f'\nSolution found: {solution}')
