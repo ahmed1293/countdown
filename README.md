@@ -25,7 +25,7 @@ in `numbers_async.py` to change this.
 
 ## sync
 
-`pypy3 numbers_sync.py`, then follow instructions (standard Python is about 25x as slow).
+`pypy3 numbers_sync.py`, then follow instructions (standard Python is about 25x slower).
 
 #### Implementation
 
