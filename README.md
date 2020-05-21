@@ -19,7 +19,7 @@ in `numbers_async.py` to change this.
 2. For each combination of operators, find all permutations of those operators with the numbers. There should now be
 56 lists of permutations, each with a length of 39916800. An example permutation is: 
 `(1, '+', 2, 3, '*', 4, 5, 6, '+', '+', '-')`
-3. Loop through each all 56 lists, concurrently, and compute each value.
+3. Loop through all 56 lists, concurrently, and compute each value.
 4. Once a solution is found, add it to a common set of solutions.
 5. Stop when the number of solutions is equal to the required value.
 
